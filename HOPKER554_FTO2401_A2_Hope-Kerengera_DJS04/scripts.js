@@ -7,8 +7,11 @@ import {
   filterBooks,
 } from "./utils/helper.js";
 
+//IMPORTING SEARCH AND PREVIEW COMPONENTS AND CREATING CUSTOM ELEMENTS FOR HTML
 import { Preview } from "./components/bookPreview.js";
 customElements.define("book-preview", Preview);
+import { Search } from "./components/search.js";
+customElements.define("book-search", Search);
 
 let page = 1;
 let matches = books;

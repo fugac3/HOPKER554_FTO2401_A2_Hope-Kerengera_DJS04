@@ -1,5 +1,7 @@
+//creating a custom element by extending the HTMLElement to display book preview
 export class Preview extends HTMLElement {
   constructor() {
+    //initializing the newly created element
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.innerHTML = `  <dialog class="overlay" data-list-active>
