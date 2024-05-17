@@ -7,6 +7,9 @@ import {
   filterBooks,
 } from "./utils/helper.js";
 
+import { Preview } from "./components/bookPreview.js";
+customElements.define("book-preview", Preview);
+
 let page = 1;
 let matches = books;
 
@@ -175,14 +178,17 @@ document
     }
 
     if (active) {
-      document.querySelector("[data-list-active]").open = true;
-      document.querySelector("[data-list-blur]").src = active.image;
-      document.querySelector("[data-list-image]").src = active.image;
-      document.querySelector("[data-list-title]").innerText = active.title;
-      document.querySelector("[data-list-subtitle]").innerText = `${
+      const bookPreviewElement =
+        document.querySelector("book-preview").shadowRoot;
+      bookPreviewElement.querySelector("[data-list-active]").open = true;
+      bookPreviewElement.querySelector("[data-list-blur]").src = active.image;
+      bookPreviewElement.querySelector("[data-list-image]").src = active.image;
+      bookPreviewElement.querySelector("[data-list-title]").innerText =
+        active.title;
+      bookPreviewElement.querySelector("[data-list-subtitle]").innerText = `${
         authors[active.author]
       } (${new Date(active.published).getFullYear()})`;
-      document.querySelector("[data-list-description]").innerText =
+      bookPreviewElement.querySelector("[data-list-description]").innerText =
         active.description;
     }
   });
